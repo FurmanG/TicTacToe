@@ -14,19 +14,22 @@ function placeXOro(squareNumber){
      select.style.backgroundImage = 'url("images/o.png")';
      audio('media/place.mp3');
    }
+   // Connects the square number with the player.  (example "3X" "5O" ....)
    selectedSquares.push(squareNumber + activePlayer);
    checkWinConditions();
+   // Jumps from player to player
    if(activePlayer === 'X'){
-    activePlayer = 'O';    
+    activePlayer = 'O'; 
    } else {
     activePlayer = 'X';
-    }
-    if(activePlayer === '0'){
+   }
+    if(activePlayer === 'O'){
       disableClick();
-      setTimeout(function (){ computersTurn();},1000)
-    } 
+      setTimeout(function (){ computersTurn(); }, 1000);
+    }; 
     return true;
-  }
+  };
+
   // This function results in a random square being selected.
   function computersTurn(){
     let success = false;
@@ -59,7 +62,6 @@ function checkWinConditions(){
   else if (arrayIncludes('6O','4O','2O')){drawWinLine(100, 508, 510, 90)}
   else if (arrayIncludes('0O','4O','8O')){drawWinLine(100, 100, 520, 520)}
   else if (selectedSquares.length >= 9){
-
     setTimeout(function(){resetGame();},1000);
   }
 // Checks for each win condition. 
